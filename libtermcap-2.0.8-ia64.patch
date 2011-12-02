@@ -1,0 +1,13 @@
+--- termcap-2.0.8/termcap.c.ia64sux	Mon Jan 14 17:59:19 2002
++++ termcap-2.0.8/termcap.c	Mon Jan 14 18:00:01 2002
+@@ -694,6 +694,10 @@
+ 	(*outfun) (PC);
+ }
+ 
++static long foo(long x, long y)
++{
++	return x / y;
++}
+ 
+ #ifdef TEST
+ /*ARGSUSED*/

@@ -1,0 +1,21 @@
+Don't blow up if the last character in the string happens to be '\' or '^'.
+--- termcap-2.0.8/termcap.c	2005-03-18 14:24:52.767794472 -0500
++++ termcap-2.0.8/termcap.c	2005-03-18 14:24:46.507612002 -0500
+@@ -110,7 +110,7 @@
+   /* Translate escaped characters and hat-notation. */
+   while((c = *s++)) {
+ 	start = s - 1;
+-	if (c == '\\') {
++	if ((c == '\\') && (*s)) {
+ 
+ 		/* Escaped character. */
+ 		c = *s++;
+@@ -131,7 +131,7 @@
+ 					break;
+ 				}
+ 		}
+-	} else if (c == '^')
++	} else if ((c == '^') && (*s))
+ 		/* Hat notation. */
+ 		c = *s++ & 0x1f;
+ 

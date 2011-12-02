@@ -1,0 +1,31 @@
+Don't accept octal numbers which contain '8' or '9', because they're just weird.
+--- termcap-2.0.8/termcap.c	2005-03-18 14:26:45.449079197 -0500
++++ termcap-2.0.8/termcap.c	2005-03-18 14:26:50.554412482 -0500
+@@ -115,11 +115,11 @@
+ 		/* Escaped character. */
+ 		c = *s++;
+ 
+-		if (c >= '0' && c <= '9') {
++		if (c >= '0' && c <= '7') {
+ 			/* Octal number. */
+ 			c -= '0';
+ 			i = 0;
+-			while(*s >= '0' && *s <= '9' && ++i < 3) {
++			while(*s >= '0' && *s <= '7' && ++i < 3) {
+ 				c = (c * 8) + (*s - '0');
+ 				s++;
+ 			}
+@@ -608,11 +608,11 @@
+ 		/* Escaped character. */
+ 		c = *s++;
+ 
+-		if (c >= '0' && c <= '9') {
++		if (c >= '0' && c <= '7') {
+ 			/* Octal number. */
+ 			c -= '0';
+ 			i = 0;
+-			while(*s >= '0' && *s <= '9' && ++i < 3) {
++			while(*s >= '0' && *s <= '7' && ++i < 3) {
+ 				c = (c * 8) + (*s - '0');
+ 				s++;
+ 			}

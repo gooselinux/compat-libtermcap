@@ -1,0 +1,12 @@
+--- termcap-2.0.8/termcap.c.116934	2004-04-21 14:02:57.000000000 +0100
++++ termcap-2.0.8/termcap.c	2004-04-21 14:03:57.000000000 +0100
+@@ -457,6 +457,9 @@
+        put data in the termcap buffer themselves as a fallback.  */
+     if (buffer)
+     {
++      /* Free old buffer if possible. */
++      if (is_malloced && term_entry) free(term_entry);
++      is_malloced = 0;
+       term_entry = buffer;
+     }
+     return(0);

@@ -1,0 +1,10 @@
+--- termcap-2.0.8/termcap.c.rasold	2006-01-02 17:10:29.000000000 +0100
++++ termcap-2.0.8/termcap.c	2006-01-02 17:10:52.000000000 +0100
+@@ -421,6 +421,7 @@
+ 	sp = get_one_entry(fp, term_list[index]);
+ 	if (sp == NULL) break;
+ 	build_list(&l, sp, term_list);
++	free (sp);
+   }
+   fclose(fp);
+ 
